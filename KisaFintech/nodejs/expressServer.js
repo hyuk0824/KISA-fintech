@@ -23,8 +23,12 @@ connection.end();
 //*************************************************************
 
 app.get('/', function (req, res) {
-  res.send('Hello World')
+  res.send('Hello World');
 });
+
+app.get('/join', function(req, res){
+  res.render('join');
+})
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -50,6 +54,13 @@ app.get('/user', function(req, res){
 
 app.post('/user', function(req,res){
 
+})
+app.post('userJoin', function(req,res){
+  var name = req.body.name;
+  var phone = req.body.phone;
+  var age = req.body.age;
+
+  
 })
 
 app.listen(3000);
