@@ -3,9 +3,10 @@
             <script
             src="https://code.jquery.com/jquery-2.2.4.js"
             integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
-            crossorigin="anonymous"></script>     
+            crossorigin="anonymous"></script> 
     </head>
     <body>
+
             <table>
                     <tr>
                         <td>이름</td>
@@ -25,13 +26,30 @@
                 <script>
                    
                     $('#sendbutton').click(function(){
-                        var name = $('#name').val();
-                        var phone = $('#phone').val();
-                        var age = $('#age').val();
+                        var input_name = $('#name').val();
+                        var input_phone = $('#phone').val();
+                        var input_age = $('#age').val();
                         console.log(name,phone,age);
-                    })
+                        $.ajax({
+                            url : 'http://localhost:3000/userJoin',
+                            type : 'POST',
+                            dataType : 'JSON',
+                            data : {
+                                nameajax: input_name,
+                                phoneajax: input_phone,
+                                ageajax: input_age
+                            },
+                            success : function(response){
+                                console.log(response);
+                            }
+
+                            });  
+                          
+                            console.log(name, phone, age);
+                    });
                     
-                    console.log(name);
+                    
                 </script>
+                
     </body>
 </html>
